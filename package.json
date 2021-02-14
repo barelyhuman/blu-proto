@@ -1,6 +1,6 @@
 {
   "name": "blu",
-  "version": "0.0.1-dev.1",
+  "version": "0.0.1-dev.2",
   "description": "Simple Mac OSX Bluetooth Reset app",
   "main": "app.js",
   "dependencies": {
