@@ -1,0 +1,18 @@
+{
+  "name": "electron-routex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "electron": "^9.3.1",
+    "find-free-ports": "^2.0.3",
+    "ftrouter": "github:barelyhuman/ftrouter"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
