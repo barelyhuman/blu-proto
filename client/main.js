@@ -1,24 +1,20 @@
-(function(){
+import React from 'react';
+import { render } from 'react-dom';
+import Home from './components/home';
 
-    const querystring = require('querystring');
-    let query = querystring.parse(global.location.search);
-    let port = JSON.parse(query['?port'])
+function App() {
+  return (
+    <>
+      <Home />
+      <style>
+        {`
+        body{
+          -webkit-app-region: drag
+        }
+        `}
+      </style>
+    </>
+  );
+}
 
-
-    const APIURL = `http://localhost:${port}/api`
-
-    fetch(APIURL+'/status')
-    .then(r=>r.json())
-    .then((data)=>{
-
-        const statusContainer = document.getElementById('status');
-        statusContainer.innerHTML = "Status: "+data.status;
-
-
-    })
-    .catch(err=>{
-        console.log(err);
-    });
-
-
-})()
+render(<App />, document.getElementById('app'));

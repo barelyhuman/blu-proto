@@ -1,18 +1,45 @@
 {
-  "name": "electron-routex",
-  "version": "1.0.0",
-  "description": "",
+  "name": "blu",
+  "version": "0.0.1",
+  "description": "Simple Mac OSX Bluetooth Reset app",
   "main": "app.js",
   "dependencies": {
     "electron": "^9.3.1",
     "find-free-ports": "^2.0.3",
-    "ftrouter": "github:barelyhuman/ftrouter"
+    "preset-react": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "electron-packager": "^15.2.0",
+    "standard": "^16.0.3"
+  },
   "scripts": {
-    "start": "electron app.js"
+    "copy:bins": "cp node_modules/ftrouter/dist/index.js bin/ftrouter",
+    "start": "electron app.js",
+    "fix": "standard --fix || true ",
+    "clean": "rm -r ~/Documents/Blu-darwin-x64/; echo 'cleaned build location'",
+    "build": "yarn clean; yarn build:client; yarn build:osx",
+    "build:client": "cd client; yarn build; cd ../client",
+    "build:osx": "NODE_ENV=production electron-packager . Blu --platform=darwin --arch=x64 --out ~/Documents/ --overwrite --icon=icon.icns ; echo 'Built for OSX'"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "standard": {
+    "ignore": [
+      "node_modules",
+      "dist",
+      "rlayouts.js"
+    ]
+  },
+  "build": {
+    "bins": [
+      {
+        "from": "./bin/",
+        "to": "bin",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
 }
