@@ -16,10 +16,11 @@
     "copy:bins": "cp node_modules/ftrouter/dist/index.js bin/ftrouter",
     "start": "electron app.js",
     "fix": "standard --fix || true ",
-    "clean": "rm -r ~/Documents/Blu-darwin-x64/; echo 'cleaned build location'",
+    "clean": "rm -r ./builds/Blu-darwin-x64/; echo 'cleaned build location'",
     "build": "yarn clean; yarn build:client; yarn build:osx",
     "build:client": "cd client; yarn build; cd ../client",
-    "build:osx": "NODE_ENV=production electron-packager . Blu --platform=darwin --arch=x64 --out ~/Documents/ --overwrite --icon=icon.icns ; echo 'Built for OSX'"
+    "build:osx": "NODE_ENV=production electron-packager . Blu --platform=darwin --arch=x64 --out ./builds/ --overwrite --icon=icon.icns ; echo 'Built for OSX'",
+    "create:dmg": "npx create-dmg builds/Blu-darwin-x64/Blu.app || echo 'done'"
   },
   "keywords": [],
   "author": "",
